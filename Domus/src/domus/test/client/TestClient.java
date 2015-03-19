@@ -1,4 +1,4 @@
-package domus.server;
+package domus.test.client;
 
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
