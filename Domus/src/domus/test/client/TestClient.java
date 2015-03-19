@@ -7,6 +7,11 @@ import java.rmi.server.UnicastRemoteObject;
 
 import domus.server.RemoteDomusInterface;
 
+/*
+	Classe di test, che prova ad utilizzare i metodi remoti esposti dal server RMI
+
+*/
+
 public class TestClient {
 
 	public static void main(String[] args) {
