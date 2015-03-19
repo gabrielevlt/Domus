@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 
 import domus.server.sensors.*;
 
-public class Domus implements RemoteDomusInterface{
+public class Domus implements RemoteDomusInterface {
 	Thermostat thermostat;
 	Light light;
 	Shutter shutter;
@@ -35,7 +35,7 @@ public class Domus implements RemoteDomusInterface{
 	@Override
 	public void setSettedTemperature(double d) throws RemoteException {
 		thermostat.setSettedTemperature(d);
-		
+
 	}
 
 	@Override
