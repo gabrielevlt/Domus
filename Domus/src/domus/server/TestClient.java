@@ -5,37 +5,29 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
-public class Server {
-	Domus domus;
+import domus.server.RemoteDomusInterface;
 
-	public Server() {
-		super();
-		domus = new Domus();
-	}
+public class TestClient {
 
 	public static void main(String[] args) {
 		// CREAZIONE SECURITY MANAGER
 		if (System.getSecurityManager() == null)
 			System.setSecurityManager(new SecurityManager());
-
+		
 		try {
-			// ISTANZA DEL SERVER
-			Server server = new Server();
-			
 			// NOME OGGETTO REMOTO
 			String serviceName = "Domus";
 			
 			// STUB
-			RemoteDomusInterface stub= (RemoteDomusInterface) UnicastRemoteObject.exportObject(server.domus, 0);
-			Registry registry=LocateRegistry.getRegistry();
-			registry.rebind(serviceName, stub);
+			Registry registry=LocateRegistry.getRegistry("localhost");
+			RemoteDomusInterface rdi= (RemoteDomusInterface) registry.lookup(serviceName);
+			System.out.println(rdi.getLightState());
 			
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
 }
