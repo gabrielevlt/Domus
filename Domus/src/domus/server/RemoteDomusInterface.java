@@ -6,21 +6,21 @@ public interface RemoteDomusInterface extends Remote{
 	
 	// THERMOSTAT
 	boolean getThermostatState() throws RemoteException;
-	double getActualTermperature() throws RemoteException;
-	double getSettedTermperature() throws RemoteException;
-	double setSettedTermperature() throws RemoteException;
+	double getActualTemperature() throws RemoteException;
+	double getSettedTemperature() throws RemoteException;
+	void setSettedTemperature(double d) throws RemoteException;
 	
 	// LIGHT
 	boolean getLightState() throws RemoteException;
-	boolean setLightState() throws RemoteException;
+	void setLightState(boolean b) throws RemoteException;
 	
 	// SHUTTER
 	boolean getShutterState() throws RemoteException;
-	boolean setShutterState() throws RemoteException;
+	void setShutterState(boolean b) throws RemoteException;
 	
 	// SPRINKLER
 	boolean getSprinklerState() throws RemoteException;
-	boolean setSprinklerState() throws RemoteException;
+	void setSprinklerState(boolean b) throws RemoteException;
 	int getDutyTime() throws RemoteException;
-	int setDutyTime() throws RemoteException;
+	void setDutyTime(int i) throws RemoteException;
 }

@@ -1,18 +1,18 @@
 package domus.server.sensors;
 
 public class Light {
-	private boolean state;
+	private boolean turnedOn;
 	
 	public Light(){
-		state=false;
+		this.turnedOn=false;
 	}
 
-	public boolean isState() {
-		return state;
+	public boolean isTurnedOn() {
+		return this.turnedOn;
 	}
 
-	public void setState(boolean state) {
-		this.state = state;
+	public void setLight(boolean state) {
+		this.turnedOn = state;
 	}
 
 }

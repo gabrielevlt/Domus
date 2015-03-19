@@ -2,27 +2,37 @@ package domus.server.sensors;
 
 public class Thermostat {
 	private boolean on;
-	private double temperature;
+	private double settedTemperature;
+	private double actualTemperature;
 	
 	public Thermostat(){
-		on=false;
-		temperature=22.5;
+		this.on=false;
+		this.settedTemperature=22.5;
+		this.actualTemperature=22.5;
 	}
 
 	public boolean isOn() {
-		return on;
+		return this.on;
 	}
 
 	public void setOn(boolean on) {
 		this.on = on;
 	}
 
-	public double getTemperature() {
-		return temperature;
+	public double getSettedTemperature() {
+		return this.settedTemperature;
 	}
 
-	public void setTemperature(double temperature) {
-		this.temperature = temperature;
+	public void setSettedTemperature(double settedTemperature) {
+		this.settedTemperature = settedTemperature;
+	}
+
+	public double getActualTemperature() {
+		return this.actualTemperature;
+	}
+
+	public void setActualTemperature(double actualTemperature) {
+		this.actualTemperature = actualTemperature;
 	}
 
 }

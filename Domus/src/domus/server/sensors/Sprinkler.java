@@ -1,28 +1,28 @@
 package domus.server.sensors;
 
 public class Sprinkler {
-	private boolean state;
-	private int duty_time;
+	private boolean working;
+	private int dutyTime;
 	
 	public Sprinkler(){
-		state=false;
-		duty_time=5;
+		this.working=false;
+		this.dutyTime=5;
 	}
 
-	public boolean isState() {
-		return state;
+	public boolean isWorking() {
+		return this.working;
 	}
 
-	public void setState(boolean state) {
-		this.state = state;
+	public void setSprinkler(boolean state) {
+		this.working = state;
 	}
 
-	public int getDuty_time() {
-		return duty_time;
+	public int getDutyTime() {
+		return this.dutyTime;
 	}
 
-	public void setDuty_time(int duty_time) {
-		this.duty_time = duty_time;
+	public void setDutyTime(int dutyTime) {
+		this.dutyTime = dutyTime;
 	}
 
 }

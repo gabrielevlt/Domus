@@ -1,18 +1,18 @@
 package domus.server.sensors;
 
 public class Shutter {
-	private boolean state;
+	private boolean up;
 	
-	private Shutter(){
-		state=false;
+	public Shutter(){
+		this.up=false;
 	}
 
-	public boolean isState() {
-		return state;
+	public boolean isUp() {
+		return this.up;
 	}
 
-	public void setState(boolean state) {
-		this.state = state;
+	public void setShutter(boolean state) {
+		this.up = state;
 	}
 	
 }
