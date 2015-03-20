@@ -1,0 +1,3 @@
+grant codeBase "file:/home/tarcisio/Documenti/Progetti/ProgettoReti/Domus/Domus/bin/domus/server" {
+    permission java.security.AllPermission;
+};
