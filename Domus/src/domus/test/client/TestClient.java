@@ -3,7 +3,6 @@ package domus.test.client;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
 
 import domus.server.RemoteDomusInterface;
 
