@@ -14,6 +14,10 @@ public class Server {
 	}
 
 	public static void main(String[] args) {
+		// SETTING PROPRIETA' DI SISTEMA
+		System.setProperty("java.rmi.server.hostname", "localhost");
+		System.setProperty("java.security.policy", "server.policy");
+		
 		// CREAZIONE SECURITY MANAGER
 		if (System.getSecurityManager() == null)
 			System.setSecurityManager(new SecurityManager());
