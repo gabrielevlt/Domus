@@ -14,6 +14,9 @@ import domus.server.RemoteDomusInterface;
 public class TestClient {
 
 	public static void main(String[] args) {
+		// PROPRIETA' DI SISTEMA
+		System.setProperty("java.security.policy", "file:./server.policy");
+		
 		// CREAZIONE SECURITY MANAGER
 		if (System.getSecurityManager() == null)
 			System.setSecurityManager(new SecurityManager());

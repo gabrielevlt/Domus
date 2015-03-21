@@ -34,6 +34,8 @@ public class Server {
 			Registry registry=LocateRegistry.getRegistry();
 			registry.rebind(serviceName, stub);
 			
+			System.out.println("Server avviato!");;
+			
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
