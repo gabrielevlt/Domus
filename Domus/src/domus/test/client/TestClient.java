@@ -14,12 +14,6 @@ import domus.server.RemoteDomusInterface;
 public class TestClient {
 
 	public static void main(String[] args) {
-		// PROPRIETA' DI SISTEMA
-		System.setProperty("java.security.policy", "file:./server.policy");
-		
-		// CREAZIONE SECURITY MANAGER
-		if (System.getSecurityManager() == null)
-			System.setSecurityManager(new SecurityManager());
 		
 		try {
 			// NOME OGGETTO REMOTO
@@ -28,6 +22,8 @@ public class TestClient {
 			// STUB
 			Registry registry=LocateRegistry.getRegistry("localhost");
 			RemoteDomusInterface rdi= (RemoteDomusInterface) registry.lookup(serviceName);
+			System.out.println(rdi.getLightState());
+			rdi.setLightState(true);
 			System.out.println(rdi.getLightState());
 			
 		} catch (RemoteException e) {

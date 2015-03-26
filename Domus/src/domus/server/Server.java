@@ -5,6 +5,8 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
+import domus.server.RemoteDomusInterface;
+
 public class Server {
 	Domus domus;
 
@@ -14,13 +16,6 @@ public class Server {
 	}
 
 	public static void main(String[] args) {
-		// SETTING PROPRIETA' DI SISTEMA
-		System.setProperty("java.rmi.server.hostname", "localhost");
-		System.setProperty("java.security.policy", "file:./server.policy");
-		
-		// CREAZIONE SECURITY MANAGER
-		if (System.getSecurityManager() == null)
-			System.setSecurityManager(new SecurityManager());
 
 		try {
 			// ISTANZA DEL SERVER
