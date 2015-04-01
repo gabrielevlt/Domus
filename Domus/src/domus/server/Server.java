@@ -16,6 +16,8 @@ public class Server {
 	}
 
 	public static void main(String[] args) {
+		// SETTING PROPRIETA' DI SISTEMA
+		System.setProperty("java.rmi.server.hostname", "52.10.94.138");
 
 		try {
 			// ISTANZA DEL SERVER
@@ -25,8 +27,8 @@ public class Server {
 			String serviceName = "Domus";
 			
 			// STUB
-			RemoteDomusInterface stub= (RemoteDomusInterface) UnicastRemoteObject.exportObject(server.domus, 0);
-			Registry registry=LocateRegistry.getRegistry();
+			RemoteDomusInterface stub= (RemoteDomusInterface) UnicastRemoteObject.exportObject(server.domus, 1100);
+			Registry registry=LocateRegistry.createRegistry(1099);
 			registry.rebind(serviceName, stub);
 			
 			System.out.println("Server avviato!");;
