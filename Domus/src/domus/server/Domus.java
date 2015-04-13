@@ -2,6 +2,8 @@ package domus.server;
 
 import java.rmi.RemoteException;
 
+import domus.server.RemoteDomusInterface;
+
 import domus.server.sensors.*;
 
 public class Domus implements RemoteDomusInterface {

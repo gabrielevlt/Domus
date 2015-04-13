@@ -28,7 +28,8 @@ public class TestClient {
 			String serviceName = "Domus";
 			
 			// STUB
-			Registry registry=LocateRegistry.getRegistry("52.10.94.138");
+			//Registry registry=LocateRegistry.getRegistry("52.10.94.138");
+			Registry registry=LocateRegistry.getRegistry("localhost");
 			RemoteDomusInterface rdi= (RemoteDomusInterface) registry.lookup(serviceName);
 			System.out.println(rdi.getLightState());
 			rdi.setLightState(true);
