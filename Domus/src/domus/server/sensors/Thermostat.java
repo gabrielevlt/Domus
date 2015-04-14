@@ -1,36 +1,45 @@
 package domus.server.sensors;
 
 import java.util.Date;
-import java.util.Random;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 public class Thermostat implements Runnable {
 
+	// THERMOSTAT'S ATTRIBUTES
 	private boolean on;
 	private double settedTemperature;
 	private double actualTemperature;
-	private DateFormat dateFormat;
+
+	// DATE FORMAT
+	private SimpleDateFormat dateFormat;
+
+	// BEHAVIOUR
 	Thread thermostatBehaviour;
 
 	public Thermostat() {
+
+		// SETTING FLAGS AND ATTRIBUTES
 		this.on = true;
 		this.settedTemperature = 22.5;
 		this.actualTemperature = 22.5;
+
+		// SETTING DATE FORMAT
 		this.dateFormat = new SimpleDateFormat("HH:mm:ss" + ", " + "dd/MM/yy");
-		thermostatBehaviour = new Thread(this, "thermostat");
-		thermostatBehaviour.start();
+
+		// CREATING AND STARTING THERMOSTAT BEHAVIOUR THREAD
+		this.thermostatBehaviour = new Thread(this, "thermostat");
+		this.thermostatBehaviour.start();
 	}
 
 	public boolean isOn() {
 		return this.on;
 	}
 
-	public void setOn(boolean on) {
-		this.on = on;
+	public void setThermostat(boolean b) {
+		this.on = b;
 		System.out.println(Thread.currentThread() + " @ ["
 				+ dateFormat.format(new Date()) + "] says: thermostat is now "
-				+ this.on);
+				+ (isOn() ? "on" : "off"));
 	}
 
 	public double getSettedTemperature() {
@@ -42,7 +51,7 @@ public class Thermostat implements Runnable {
 		System.out.println(Thread.currentThread() + " @ ["
 				+ dateFormat.format(new Date())
 				+ "] says: the wanted tempearture now is "
-				+ this.settedTemperature);
+				+ getSettedTemperature());
 	}
 
 	public double getActualTemperature() {
@@ -62,30 +71,31 @@ public class Thermostat implements Runnable {
 			double randomDouble;
 			while (true) {
 				Thread.sleep(60000);
-				if(on){
-					randomDouble=Math.random();
-					if(randomDouble%2==0){
-						if(((int)(randomDouble*10)%10)%2==0){
-							
-							setActualTemperature(((getActualTemperature()+getSettedTemperature())/2)+randomDouble);
-						}else{
-							setActualTemperature(((getActualTemperature()+getSettedTemperature())/2)-randomDouble);
+				if (isOn()) {
+					randomDouble = Math.random();
+					if (randomDouble % 2 == 0) {
+						if (((int) (randomDouble * 10) % 10) % 2 == 0) {
+
+							setActualTemperature(((getActualTemperature() + getSettedTemperature()) / 2)
+									+ randomDouble);
+						} else {
+							setActualTemperature(((getActualTemperature() + getSettedTemperature()) / 2)
+									- randomDouble);
 						}
-					}else{
-						if(((int)(randomDouble*10)%10)%2==0){
-							setActualTemperature(((getActualTemperature()+getSettedTemperature())/2)+randomDouble);
-						}else{
-							setActualTemperature(((getActualTemperature()+getSettedTemperature())/2)-randomDouble);
+					} else {
+						if (((int) (randomDouble * 10) % 10) % 2 == 0) {
+							setActualTemperature(((getActualTemperature() + getSettedTemperature()) / 2)
+									+ randomDouble);
+						} else {
+							setActualTemperature(((getActualTemperature() + getSettedTemperature()) / 2)
+									- randomDouble);
 						}
 					}
-					
+
 				}
 			}
 		} catch (InterruptedException e) {
-			System.out.println(Thread.currentThread() + " interrotto");
+			System.out.println(Thread.currentThread() + " interrupted");
 		}
 	}
-
-	public static void main(String[] args){ new Thermostat(); }
-
 }
