@@ -5,42 +5,39 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 public class Light implements Runnable {
-
-	private boolean turnedOn;
+	private boolean light; 
 	private DateFormat dateFormat;
 	Thread lightBehaviour;
 
-	public Light() {
-		this.turnedOn = false;
+	public Light(String name) {
+		light = false;
 		this.dateFormat = new SimpleDateFormat("HH:mm:ss"+", "+"dd/MM/yy");
-		lightBehaviour = new Thread(this, "light");
+		lightBehaviour = new Thread(this, "light:" + name);
 		lightBehaviour.start();
 	}
 
-	public boolean isTurnedOn() {
-		return this.turnedOn;
+	public boolean isOn() {
+		return light;
 	}
 
-	public void setLight(boolean turnedOn) {
-		this.turnedOn = turnedOn;
+	public void setLight(boolean state) {
+		light = state;
 		System.out.println(Thread.currentThread() + " @ ["
 				+ dateFormat.format(new Date()) + "] says: light is "
-				+ turnedOn);
+				+ light);
 	}
 
 	public void run() {
 		try {
 			while (true) {
+				//ogni 5000ms cambia lo stato della luce
 				Thread.sleep(5000);
-				if (isTurnedOn())
-					setLight(false);
-				else
-					setLight(true);
+				setLight( !isOn() );
 			}
 		} catch (InterruptedException e) {
 			System.out.println(Thread.currentThread() + " interrotto");
 		}
 	}
 
-	public static void main(String[] args){ new Light(); }
+	//public static void main(String[] args){ new Light(); }
 }

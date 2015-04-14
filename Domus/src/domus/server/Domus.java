@@ -8,14 +8,23 @@ import domus.server.sensors.*;
 
 public class Domus implements RemoteDomusInterface {
 	Thermostat thermostat;
-	Light light;
-	Shutter shutter;
+	Light[] light;
+	Shutter[] shutter;
 	Sprinkler sprinkler;
 
 	public Domus() {
 		thermostat = new Thermostat();
-		light = new Light();
-		shutter = new Shutter();
+		
+		light = new Light[3];
+		light[0] = new Light("Kitchen");
+		light[1] = new Light("Living room");
+		light[2] = new Light("Bathroom");
+		
+		shutter = new Shutter[3];
+		shutter[0] = new Shutter("Kitchen");
+		shutter[1] = new Shutter("Living room");
+		shutter[2] = new Shutter("Bathroom");
+		
 		sprinkler = new Sprinkler();
 	}
 
@@ -41,23 +50,23 @@ public class Domus implements RemoteDomusInterface {
 	}
 
 	@Override
-	public boolean getLightState() throws RemoteException {
-		return light.isTurnedOn();
+	public boolean getLightState(int room) throws RemoteException {
+		return light[room].isOn();
 	}
 
 	@Override
-	public void setLightState(boolean b) throws RemoteException {
-		light.setLight(b);
+	public void setLightState(int room, boolean b) throws RemoteException {
+		light[room].setLight( b);
 	}
 
 	@Override
-	public boolean getShutterState() throws RemoteException {
-		return shutter.isUp();
+	public boolean getShutterState(int room) throws RemoteException {
+		return shutter[room].isUp();
 	}
 
 	@Override
-	public void setShutterState(boolean b) throws RemoteException {
-		shutter.setShutter(b);
+	public void setShutterState(int room, boolean b) throws RemoteException {
+		shutter[room].setShutter(b);
 	}
 
 	@Override

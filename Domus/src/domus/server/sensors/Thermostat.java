@@ -66,15 +66,16 @@ public class Thermostat implements Runnable {
 					randomDouble=Math.random();
 					if(randomDouble%2==0){
 						if(((int)(randomDouble*10)%10)%2==0){
-							setActualTemperature(getActualTemperature()+randomDouble);
+							
+							setActualTemperature(((getActualTemperature()+getSettedTemperature())/2)+randomDouble);
 						}else{
-							setActualTemperature(getActualTemperature()-randomDouble);
+							setActualTemperature(((getActualTemperature()+getSettedTemperature())/2)-randomDouble);
 						}
 					}else{
 						if(((int)(randomDouble*10)%10)%2==0){
-							setActualTemperature(getActualTemperature()+randomDouble);
+							setActualTemperature(((getActualTemperature()+getSettedTemperature())/2)+randomDouble);
 						}else{
-							setActualTemperature(getActualTemperature()-randomDouble);
+							setActualTemperature(((getActualTemperature()+getSettedTemperature())/2)-randomDouble);
 						}
 					}
 					

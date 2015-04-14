@@ -6,35 +6,33 @@ import java.text.SimpleDateFormat;
 
 public class Shutter implements Runnable {
 
-	private boolean up;
+	private boolean shutter; 
 	private DateFormat dateFormat;
 	Thread shutterBehaviour;
 
-	public Shutter() {
-		this.up = false;
+	public Shutter(String name) {
+		shutter = false;
 		this.dateFormat = new SimpleDateFormat("HH:mm:ss"+", "+"dd/MM/yy");
-		shutterBehaviour = new Thread(this, "shutter");
+		shutterBehaviour = new Thread(this, "shutter:" + name );
 		shutterBehaviour.start();
 	}
 
 	public boolean isUp() {
-		return this.up;
+		return shutter;
 	}
 
 	public void setShutter(boolean state) {
-		this.up = state;
+		shutter = state;
 		System.out.println(Thread.currentThread() + " @ ["
-				+ dateFormat.format(new Date()) + "] says: shutter is " + up);
+				+ dateFormat.format(new Date()) + "] says: shutter is " + shutter);
 	}
 
 	public void run() {
 		try {
 			while (true) {
+				//ogni 10000ms cambia lo stato della tapparella
 				Thread.sleep(10000);
-				if (up)
-					setShutter(false);
-				else
-					setShutter(true);
+				setShutter( !isUp() );
 			}
 		} catch (InterruptedException e) {
 			System.out.println(Thread.currentThread() + " interrotto");
