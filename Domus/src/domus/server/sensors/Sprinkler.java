@@ -75,6 +75,18 @@ public class Sprinkler implements Runnable {
 				+ dateFormat.format(new Date()) + "] says: new duty time is "
 				+ getDutyTime());
 	}
+	
+	public String getActivationTime() {
+		return this.hourFormat.format(activationTime.getTime()).toString();
+	}
+
+	public void setActivationTime(int h, int m) {
+		this.activationTime.set(Calendar.HOUR_OF_DAY, h);
+		this.activationTime.set(Calendar.MINUTE, m);
+		System.out.println(Thread.currentThread() + " @ ["
+				+ dateFormat.format(new Date()) + "] says: new activation time is "
+				+ getActivationTime());
+	}
 
 	public void run() {
 		try {
