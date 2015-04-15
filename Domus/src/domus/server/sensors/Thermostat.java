@@ -46,8 +46,8 @@ public class Thermostat implements Runnable {
 		return this.settedTemperature;
 	}
 
-	public void setSettedTemperature(double settedTemperature) {
-		this.settedTemperature = settedTemperature;
+	public void setSettedTemperature(double d) {
+		this.settedTemperature = d;
 		System.out.println(Thread.currentThread() + " @ ["
 				+ dateFormat.format(new Date())
 				+ "] says: the wanted tempearture now is "
@@ -58,12 +58,12 @@ public class Thermostat implements Runnable {
 		return this.actualTemperature;
 	}
 
-	public void setActualTemperature(double actualTemperature) {
-		this.actualTemperature = actualTemperature;
+	public void setActualTemperature(double d) {
+		this.actualTemperature = d;
 		System.out.println(Thread.currentThread() + " @ ["
 				+ dateFormat.format(new Date())
 				+ "] says: the actual temperature sensed is "
-				+ this.actualTemperature);
+				+ getActualTemperature());
 	}
 
 	public void run() {

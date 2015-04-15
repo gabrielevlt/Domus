@@ -77,7 +77,7 @@ public class Sprinkler implements Runnable {
 	}
 	
 	public String getActivationTime() {
-		return this.hourFormat.format(activationTime.getTime()).toString();
+		return this.hourFormat.format(activationTime.getTime());
 	}
 
 	public void setActivationTime(int h, int m) {
