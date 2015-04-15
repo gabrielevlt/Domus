@@ -9,8 +9,7 @@ import domus.server.RemoteDomusInterface;
 
 public class Server {
 	Domus domus;
-	static String host = "localhost"; // OR REMOTE IP ADDRESS E.G.
-										// "52.10.94.138"
+	static String host = "localhost"; // OR REMOTE IP ADDRESS E.G. "52.10.94.138"
 	static int exportingPort = 1100;
 	static int bindingPort = 1099;
 	static String serviceName = "Domus";
