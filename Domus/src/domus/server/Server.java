@@ -32,8 +32,7 @@ public class Server {
 
 		try {
 			// CREATING STUB EXPORTING REMOTE OBJECT
-			RemoteDomusInterface remoteObjectStub = (RemoteDomusInterface) UnicastRemoteObject
-					.exportObject(server.domus, exportingPort);
+			RemoteDomusInterface remoteObjectStub = (RemoteDomusInterface) UnicastRemoteObject.exportObject(server.domus, exportingPort);
 
 			System.out
 					.println(" > Remote object exported successfully on port: "
