@@ -1,16 +1,11 @@
 package domus.server.sensors;
 
-import java.util.Date;
 import java.util.Random;
-import java.text.SimpleDateFormat;
 
 public class Light implements Runnable {
 
 	// LIGHT'S ATTRIBUTES
 	private boolean on;
-
-	// DATE FORMAT
-	private SimpleDateFormat dateFormat;
 
 	// BEHAVIOUR
 	Thread lightBehaviour;
@@ -20,8 +15,6 @@ public class Light implements Runnable {
 		// SETTING FLAGS
 		this.on = false;
 
-		// SETTING DATE FORMAT
-		this.dateFormat = new SimpleDateFormat("HH:mm:ss" + ", " + "dd/MM/yy");
 
 		// CREATING AND STARTING LIGHT BEHAVIOUR THREAD
 		this.lightBehaviour = new Thread(this, name + ".light");
@@ -34,9 +27,6 @@ public class Light implements Runnable {
 
 	public void setLight(boolean b) {
 		this.on = b;
-		System.out.println(Thread.currentThread() + " @ ["
-				+ dateFormat.format(new Date()) + "] says: light is now "
-				+ (isOn() ? "on" : "off"));
 	}
 
 	public void run() {

@@ -14,7 +14,6 @@ public class Sprinkler implements Runnable {
 
 	// DATE AND HOUR FORMAT
 	private SimpleDateFormat hourFormat;
-	private SimpleDateFormat dateFormat;
 
 	// BEHAVIOUR
 	Thread sprinklerBehaviour;
@@ -36,7 +35,6 @@ public class Sprinkler implements Runnable {
 
 		// SETTING DATE AND HOUR FORMAT
 		this.hourFormat = new SimpleDateFormat("HH:mm");
-		this.dateFormat = new SimpleDateFormat("HH:mm:ss" + ", " + "dd/MM/yy");
 
 		// CREATING AND STARTING SPRINKLER BEHAVIOUR THREAD
 		this.sprinklerBehaviour = new Thread(this, "sprinkler");
@@ -49,9 +47,6 @@ public class Sprinkler implements Runnable {
 
 	public void setSprinkler(boolean b) {
 		this.on = b;
-		System.out.println(Thread.currentThread() + " @ ["
-				+ dateFormat.format(new Date()) + "] says: sprinkler is now "
-				+ (isOn() ? "on" : "off"));
 	}
 
 	public boolean isWorking() {
@@ -60,9 +55,6 @@ public class Sprinkler implements Runnable {
 
 	public void setWorking(boolean b) {
 		this.working = b;
-		System.out.println(Thread.currentThread() + " @ ["
-				+ dateFormat.format(new Date()) + "] says: sprinkler "
-				+ (isWorking() ? "is watering" : "has just finished watering"));
 	}
 
 	public int getDutyTime() {
@@ -71,9 +63,6 @@ public class Sprinkler implements Runnable {
 
 	public void setDutyTime(int i) {
 		this.dutyTime = i;
-		System.out.println(Thread.currentThread() + " @ ["
-				+ dateFormat.format(new Date()) + "] says: new duty time is "
-				+ getDutyTime());
 	}
 	
 	public String getActivationTime() {
@@ -83,9 +72,6 @@ public class Sprinkler implements Runnable {
 	public void setActivationTime(int h, int m) {
 		this.activationTime.set(Calendar.HOUR_OF_DAY, h);
 		this.activationTime.set(Calendar.MINUTE, m);
-		System.out.println(Thread.currentThread() + " @ ["
-				+ dateFormat.format(new Date()) + "] says: new activation time is "
-				+ getActivationTime());
 	}
 
 	public void run() {

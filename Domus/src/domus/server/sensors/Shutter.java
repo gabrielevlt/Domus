@@ -1,16 +1,11 @@
 package domus.server.sensors;
 
-import java.util.Date;
 import java.util.Random;
-import java.text.SimpleDateFormat;
 
 public class Shutter implements Runnable {
 
 	// SHUTTER'S ATTRIBUTES
 	private boolean up;
-
-	// DATE FORMAT
-	private SimpleDateFormat dateFormat;
 
 	// BEHAVIOUR
 	Thread shutterBehaviour;
@@ -19,9 +14,6 @@ public class Shutter implements Runnable {
 
 		// SETTING FLAGS
 		this.up = false;
-
-		// SETTING DATE FORMAT
-		this.dateFormat = new SimpleDateFormat("HH:mm:ss" + ", " + "dd/MM/yy");
 
 		// CREATING AND STARTING SHUTTER BEHAVIOUR THREAD
 		this.shutterBehaviour = new Thread(this, name + ".shutter");
@@ -34,9 +26,6 @@ public class Shutter implements Runnable {
 
 	public void setShutter(boolean b) {
 		this.up = b;
-		System.out.println(Thread.currentThread() + " @ ["
-				+ dateFormat.format(new Date()) + "] says: shutter is now "
-				+ (isUp() ? "up" : "down"));
 	}
 
 	public void run() {
