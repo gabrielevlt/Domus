@@ -14,8 +14,8 @@ public class Thermostat implements Runnable {
 
 		// SETTING FLAGS AND ATTRIBUTES
 		this.on = true;
-		this.settedTemperature = 22.5;
-		this.actualTemperature = 22.5;
+		this.settedTemperature = 22.0;
+		this.actualTemperature = 22.0;
 
 		// CREATING AND STARTING THERMOSTAT BEHAVIOUR THREAD
 		this.thermostatBehaviour = new Thread(this, "thermostat");

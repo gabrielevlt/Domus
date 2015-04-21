@@ -8,7 +8,6 @@ public class Sprinkler implements Runnable {
 
 	// SPRINKLER'S ATTRIBUTES
 	private boolean on;
-	private boolean working;
 	private Calendar activationTime;
 	private int dutyTime;
 
@@ -22,7 +21,6 @@ public class Sprinkler implements Runnable {
 
 		// SETTING FLAGS
 		this.on = true;
-		this.working = false;
 
 		// SETTING ACTIVATION
 		this.activationTime = Calendar.getInstance();
@@ -49,14 +47,6 @@ public class Sprinkler implements Runnable {
 		this.on = b;
 	}
 
-	public boolean isWorking() {
-		return this.working;
-	}
-
-	public void setWorking(boolean b) {
-		this.working = b;
-	}
-
 	public int getDutyTime() {
 		return this.dutyTime;
 	}
@@ -64,7 +54,7 @@ public class Sprinkler implements Runnable {
 	public void setDutyTime(int i) {
 		this.dutyTime = i;
 	}
-	
+
 	public String getActivationTime() {
 		return this.hourFormat.format(activationTime.getTime());
 	}
@@ -83,9 +73,7 @@ public class Sprinkler implements Runnable {
 					// WAIT
 				}
 				if (isOn()) {
-					setWorking(true);
 					Thread.sleep(dutyTime * 1000);
-					setWorking(false);
 				}
 				Thread.sleep(60000);
 			}
@@ -93,17 +81,4 @@ public class Sprinkler implements Runnable {
 			System.out.println(Thread.currentThread() + " interrupted");
 		}
 	}
-
-	/*
-	 * public void run(){ try{ Random random=new Random(); int randomInt;
-	 * while(true){ Thread.sleep(1000); if(working) Thread.sleep(dutyTime*1000);
-	 * else{ randomInt=random.nextInt(600); while((randomInt%dutyTime)!=0)
-	 * randomInt=random.nextInt(600); System.out.println(Thread.currentThread()
-	 * + " @ [" + dateFormat.format(new Date()) +
-	 * "] says: next duty cycle in about " + randomInt/60 +" minutes");
-	 * Thread.sleep(randomInt*1000); if(!working) setSprinkler(true);
-	 * Thread.sleep(dutyTime*1000); setSprinkler(false); } } }
-	 * catch(InterruptedException e) { System.out.println(Thread.currentThread()
-	 * + " interrotto"); } }
-	 */
 }

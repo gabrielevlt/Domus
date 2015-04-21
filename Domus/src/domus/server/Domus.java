@@ -43,6 +43,10 @@ public class Domus implements RemoteDomusInterface {
 	public boolean getThermostatState() throws RemoteException {
 		return thermostat.isOn();
 	}
+	
+	public void setThermostatState(boolean b) throws RemoteException {
+		thermostat.setThermostat(b);
+	}
 
 	@Override
 	public double getActualTemperature() throws RemoteException {
