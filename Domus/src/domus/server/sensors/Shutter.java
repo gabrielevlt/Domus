@@ -33,8 +33,8 @@ public class Shutter implements Runnable {
 			Random random = new Random();
 			int randomInt;
 			while (true) {
-				randomInt = random.nextInt(11);
-				Thread.sleep((randomInt + 3) * 1000);
+				randomInt = random.nextInt(13);
+				Thread.sleep((randomInt + 7) * 1000);
 				setShutter(!isUp());
 			}
 		} catch (InterruptedException e) {

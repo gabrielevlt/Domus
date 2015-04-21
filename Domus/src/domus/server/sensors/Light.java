@@ -34,8 +34,8 @@ public class Light implements Runnable {
 			Random random = new Random();
 			int randomInt;
 			while (true) {
-				randomInt = random.nextInt(5);
-				Thread.sleep((randomInt + 3) * 1000);
+				randomInt = random.nextInt(11);
+				Thread.sleep((randomInt + 7) * 1000);
 				setLight(!isOn());
 			}
 		} catch (InterruptedException e) {

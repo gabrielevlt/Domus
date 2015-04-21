@@ -50,7 +50,7 @@ public class Thermostat implements Runnable {
 		try {
 			double randomDouble;
 			while (true) {
-				Thread.sleep(60000);
+				Thread.sleep(30000);
 				if (isOn()) {
 					randomDouble = Math.random();
 					if (randomDouble % 2 == 0) {

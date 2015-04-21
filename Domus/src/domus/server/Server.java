@@ -53,6 +53,13 @@ public class Server {
 					.println(" > Service and remote object bound to the registry successfully");
 
 			System.out.println("> The service is ready!\n");
+			
+			Object alive=new Object();
+			synchronized (alive) {
+				try{
+					alive.wait();
+				} catch(InterruptedException e) {}
+			}
 
 		} catch (RemoteException e) {
 			e.printStackTrace();

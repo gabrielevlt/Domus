@@ -69,7 +69,7 @@ public class Sprinkler implements Runnable {
 			while (true) {
 				while (!hourFormat.format(activationTime.getTime()).equals(
 						hourFormat.format(new Date()))) {
-					Thread.sleep(100);
+					Thread.sleep(500);
 					// WAIT
 				}
 				if (isOn()) {
